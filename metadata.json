@@ -1,0 +1,6 @@
+{
+  "name": "Página de Vendas - Kit Começo Certo",
+  "description": "Página de vendas direta de alta conversão para o Kit Começo Certo (Personalizados e Renda Extra).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

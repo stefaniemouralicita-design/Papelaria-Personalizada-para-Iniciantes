@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit Começo Certo | Meu Primeiro Produto Personalizado</title>
+  <style>
+    /* RESET E CONFIGURAÇÕES GERAIS (100% OFFLINE / SEM BIBLIOTECAS EXTERNAS) */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    :root {
+      --azul-principal: #5B7CFA;
+      --azul-hover: #4669EA;
+      --lilas: #A78BFA;
+      --lilas-suave: #F0EDFE;
+      --fundo: #F7F8FF;
+      --fundo-secundario: #EEF1FD;
+      --texto: #25263A;
+      --texto-suave: #62657F;
+      --texto-escuro: #171828;
+      --branco: #FFFFFF;
+      --borda: #E2E6F8;
+      --borda-suave: #D5DBF7;
+    }
+
+    body {
+      background-color: #ECEFFA;
+      color: #25263A;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* CONTAINER PRINCIPAL: MOBILE-FIRST CENTRALIZADO (MÁXIMO 480PX) */
+    .page-container {
+      width: 100%;
+      max-width: 480px;
+      background-color: #F7F8FF;
+      min-height: 100vh;
+      box-shadow: 0 0 35px rgba(91, 124, 250, 0.12);
+      position: relative;
+      padding-bottom: 95px; /* Espaço para a barra fixa no rodapé */
+    }
+
+    /* TIPOGRAFIA E ELEMENTOS BÁSICOS */
+    h1, h2, h3, h4 {
+      color: #25263A;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: #25263A;
+    }
+
+    p.lead {
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    strong {
+      color: #171828;
+    }
+
+    .highlight-text {
+      color: #5B7CFA;
+      font-weight: 800;
+    }
+
+    /* BOTÕES DE AÇÃO (CTA) */
+    .cta-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 54px;
+      background-color: #5B7CFA;
+      color: #FFFFFF !important;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 800;
+      text-align: center;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(91, 124, 250, 0.35);
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      line-height: 1.25;
+      letter-spacing: 0.2px;
+    }
+
+    .cta-button:hover, .cta-button:active {
+      background-color: #4669EA;
+      transform: translateY(-1px);
+    }
+
+    .cta-subtext {
+      font-size: 13px;
+      color: #62657F;
+      text-align: center;
+      margin-top: -8px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    /* ESPAÇADORES DE IMAGEM / MOCKUP */
+    .mockup-container {
+      margin: 20px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      border: 1px solid var(--borda);
+      box-shadow: 0 8px 24px rgba(91, 124, 250, 0.10);
+    }
+
+    .mockup-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .mockup-caption {
+      font-size: 13px;
+      color: var(--texto-suave);
+      text-align: center;
+      padding: 10px 14px;
+      background-color: #FAFBFD;
+      border-top: 1px solid var(--borda);
+      font-weight: 600;
+    }
+
+    .mockup-placeholder {
+      background-color: #EEF1FD;
+      border: 2px dashed #C5CEF9;
+      border-radius: 8px;
+      padding: 24px 16px;
+      text-align: center;
+      margin: 18px 0;
+      color: #4B4E6B;
+    }
+
+    .mockup-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      background-color: #A78BFA;
+      color: #FFFFFF;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .mockup-desc {
+      font-size: 14px;
+      line-height: 1.45;
+      color: #3B3E5C;
+      font-weight: 600;
+    }
+
+    /* BLOCOS E SEÇÕES */
+    .section-block {
+      padding: 30px 20px;
+      border-bottom: 1px solid #E2E6F8;
+    }
+
+    /* FAIXA TOPO ALERTA PREMIUM (EXATAMENTE CONFORME A REFERÊNCIA) */
+    .top-bar-wrapper {
+      padding: 10px 12px;
+      background-color: #ECEFFA;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .top-bar-custom {
+      background-color: #15172E;
+      border: 1px solid #2B2E50;
+      border-radius: 12px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(21, 23, 46, 0.25);
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .top-alarm-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .top-info-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    .top-headline-text {
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .top-secure-pill {
+      background-color: #8587F6;
+      color: #FFFFFF;
+      font-size: 10.5px;
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      padding: 2.5px 14px;
+      border-radius: 9999px;
+      line-height: 1.2;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(133, 135, 246, 0.35);
+    }
+
+    .top-bar-divider {
+      width: 1px;
+      height: 40px;
+      background-color: rgba(167, 139, 250, 0.35);
+      flex-shrink: 0;
+    }
+
+    .top-bar-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .top-urgency-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      color: #FFFFFF;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      white-space: nowrap;
+    }
+
+    .top-flame-icon {
+      flex-shrink: 0;
+    }
+
+    .top-timer-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .top-timer-burst {
+      flex-shrink: 0;
+    }
+
+    .top-timer-capsule {
+      background-color: #8587F6;
+      padding: 4px 16px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(133, 135, 246, 0.4);
+    }
+
+    .top-timer-number {
+      color: #FFFFFF;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    @media (max-width: 420px) {
+      .top-bar-wrapper {
+        padding: 6px 8px;
+      }
+      .top-bar-custom {
+        padding: 7px 8px;
+        gap: 6px;
+      }
+      .top-alarm-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+      .top-headline-text {
+        font-size: 8.5px;
+        margin-bottom: 3px;
+      }
+      .top-secure-pill {
+        font-size: 9px;
+        padding: 2px 10px;
+      }
+      .top-bar-divider {
+        height: 34px;
+      }
+      .top-urgency-header {
+        font-size: 7.8px;
+        margin-bottom: 3px;
+      }
+      .top-timer-capsule {
+        padding: 3px 11px;
+      }
+      .top-timer-number {
+        font-size: 16px;
+        letter-spacing: 1px;
+      }
+      .top-timer-burst {
+        width: 8px;
+        height: 15px;
+      }
+    }
+
+    /* 1. PRIMEIRA DOBRA */
+    .hero-section {
+      padding: 24px 20px 28px 20px;
+      border-bottom: 1px solid #E2E6F8;
+    }
+
+    .hero-tag {
+      color: #5B7CFA;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .hero-title {
+      font-size: 26px;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #525470;
+      margin-bottom: 16px;
+    }
+
+    /* 2. O ESPELHO: ISSO É PRA VOCÊ SE... */
+    .check-list {
+      list-style: none;
+      margin: 16px 0;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 14px;
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      background-color: #5B7CFA;
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 22px;
+      text-align: center;
+    }
+
+    /* 3. A CENA DA DOR */
+    .scene-box {
+      background-color: #EEF1FD;
+      border-left: 4px solid #A78BFA;
+      padding: 16px 16px 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+      font-style: normal;
+    }
+
+    /* ==========================================
+       CARROSSEL DE PRODUTOS (PASSANDO DE UM LADO PARA O OUTRO)
+       ========================================== */
+    .products-showcase-section {
+      padding: 26px 0 24px 0;
+      border-bottom: 1px solid #E2E6F8;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FF 100%);
+      overflow: hidden;
+      margin: 0 -20px;
+    }
+
+    .showcase-header {
+      padding: 0 20px 14px 20px;
+      text-align: center;
+    }
+
+    .showcase-tag {
+      color: #5B7CFA;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: inline-block;
+      background-color: #EEF2FF;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    .showcase-title {
+      font-size: 22px;
+      line-height: 1.3;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+
+    .showcase-subtitle {
+      font-size: 15px;
+      color: #525470;
+      margin-bottom: 0;
+      line-height: 1.45;
+    }
+
+    /* CONTAINER DO CARROSSEL COM DESLIZAMENTO CONTÍNUO */
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 8px 0 14px 0;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+      -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+      cursor: grab;
+    }
+
+    .carousel-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      animation: marqueeScroll 34s linear infinite;
+      will-change: transform;
+      padding-left: 10px;
+    }
+
+    .carousel-wrapper:hover .carousel-track,
+    .carousel-wrapper:active .carousel-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* CARD DO PRODUTO */
+    .showcase-product-card {
+      width: 215px;
+      flex-shrink: 0;
+      background-color: #FFFFFF;
+      border: 1px solid #DCE2F8;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(37, 38, 58, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    .showcase-product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(91, 124, 250, 0.18);
+      border-color: #B9C6FA;
+    }
+
+    .showcase-img-holder {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-color: #F0F3FE;
+      overflow: hidden;
+    }
+
+    .showcase-img-holder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .showcase-product-card:hover .showcase-img-holder img {
+      transform: scale(1.05);
+    }
+
+    .showcase-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background-color: rgba(21, 23, 46, 0.88);
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(4px);
+    }
+
+    .showcase-card-body {
+      padding: 12px 14px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .showcase-product-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #25263A;
+      line-height: 1.25;
+      margin-bottom: 5px;
+    }
+
+    .showcase-product-desc {
+      font-size: 13px;
+      color: #525470;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      flex-grow: 1;
+    }
+
+    .showcase-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #F0F2FA;
+      padding-top: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #5B7CFA;
+    }
+
+    .showcase-hint {
+      text-align: center;
+      font-size: 12px;
+      color: #7B809B;
+      margin-top: 4px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    /* 4. A VIRADA */
+    .pivot-box {
+      background-color: #25263A;
+      color: #F7F8FF;
+      padding: 24px 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .pivot-box p {
+      color: #F7F8FF;
+      margin-bottom: 0;
+    }
+
+    .pivot-box .pivot-headline {
+      font-size: 20px;
+      color: #A78BFA;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    /* 5. O QUE TEM DENTRO (CARDS) */
+    .item-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E6F8;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(91, 124, 250, 0.05);
+    }
+
+    .item-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .item-number {
+      background-color: #5B7CFA;
+      color: #FFFFFF;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .item-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #25263A;
+    }
+
+    .item-card ul {
+      margin-top: 10px;
+      margin-left: 20px;
+      font-size: 16px;
+      color: #4B4E6B;
+    }
+
+    .item-card ul li {
+      margin-bottom: 6px;
+    }
+
+    /* 6. PROVA SOCIAL */
+    .proof-box {
+      background-color: #FFFFFF;
+      border: 1px dashed #C5CEF9;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .proof-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      background-color: #EEF1FD;
+      color: #5B7CFA;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    /* 7. BÔNUS */
+    .bonus-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E6F8;
+      border-left: 4px solid #A78BFA;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .bonus-anchor {
+      font-size: 13px;
+      color: #5B7CFA;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* 8. A OFERTA */
+    .offer-box {
+      background-color: #FFFFFF;
+      border: 2px solid #5B7CFA;
+      border-radius: 12px;
+      padding: 26px 20px;
+      text-align: center;
+      margin: 20px 0;
+      box-shadow: 0 8px 24px rgba(91, 124, 250, 0.14);
+    }
+
+    .price-old {
+      font-size: 19px;
+      color: #8C8FA8;
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+
+    .price-main {
+      font-size: 46px;
+      font-weight: 900;
+      color: #5B7CFA;
+      line-height: 1;
+      margin: 8px 0;
+    }
+
+    .price-main span {
+      font-size: 22px;
+      font-weight: 700;
+      vertical-align: super;
+      margin-right: 2px;
+    }
+
+    .economy-pill {
+      display: inline-block;
+      background-color: #25263A;
+      color: #F7F8FF;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    /* CRONÔMETRO DE CONTAGEM REGRESSIVA */
+    .countdown-wrapper {
+      display: inline-block;
+      margin: 12px auto 14px auto;
+      padding: 10px 18px;
+      background-color: #F0F3FE;
+      border: 1px solid #D7DDF9;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .countdown-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #383A54;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .countdown-timer {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      color: #5B7CFA;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+      display: inline-block;
+    }
+
+    /* 9. GARANTIA */
+    .guarantee-box {
+      background-color: #EEF1FD;
+      border: 1px solid #D7DDF9;
+      border-radius: 8px;
+      padding: 22px 18px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .guarantee-badge {
+      width: 58px;
+      height: 58px;
+      background-color: #5B7CFA;
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    /* 10. QUEM FEZ */
+    .author-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E6F8;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 18px 0;
+    }
+
+    /* 11. FAQ */
+    .faq-item {
+      border-bottom: 1px solid #E2E6F8;
+      padding: 16px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-size: 18px;
+      font-weight: 800;
+      color: #25263A;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .faq-answer {
+      font-size: 16px;
+      color: #4B4E6B;
+      line-height: 1.55;
+      margin-bottom: 0;
+    }
+
+    /* 13. RODAPÉ */
+    .page-footer {
+      background-color: #1A1B29;
+      color: #A1A5C4;
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 30px 20px 20px 20px;
+      text-align: center;
+    }
+
+    .page-footer a {
+      color: #A78BFA;
+      text-decoration: none;
+    }
+
+    .footer-links {
+      margin: 12px 0;
+    }
+
+    .footer-legal-notice {
+      font-size: 11px;
+      color: #7A7E9D;
+      margin-top: 16px;
+      border-top: 1px solid #2D2F44;
+      padding-top: 14px;
+    }
+
+    /* BARRA FIXA FLUTUANTE INFERIOR */
+    .sticky-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      background-color: rgba(247, 248, 255, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid #E2E6F8;
+      padding: 10px 16px;
+      z-index: 9999;
+      box-shadow: 0 -4px 18px rgba(37, 38, 58, 0.08);
+    }
+
+    .sticky-bottom-bar .cta-button {
+      margin: 0;
+      min-height: 50px;
+      font-size: 16px;
+      padding: 12px 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CONTAINER CENTRALIZADO (MAX 480PX) -->
+  <div class="page-container">
+
+    <!-- FAIXA SUPERIOR (CONFORME A REFERÊNCIA) -->
+    <div class="top-bar-wrapper">
+      <div class="top-bar-custom">
+        <!-- LADO ESQUERDO: DESPERTADOR COM ONDAS + TEXTO + PÍLULA 100% SEGURO -->
+        <div class="top-bar-left">
+          <div class="top-alarm-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="#9E9BFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 6l2.5 2.5M25 6l-2.5 2.5"></path>
+              <path d="M3.5 14c-1 1.5-1 3.5 0 5M28.5 14c1 1.5 1 3.5 0 5" stroke-width="2"></path>
+              <circle cx="16" cy="17" r="8.5"></circle>
+              <polyline points="16 13 16 17 19.5 19"></polyline>
+              <path d="M10 25.5l-2 2M22 25.5l2 2"></path>
+            </svg>
+          </div>
+          <div class="top-info-content">
+            <div class="top-headline-text">
+              ACESSO IMEDIATO APÓS A CONFIRMAÇÃO • PAGAMENTO
+            </div>
+            <div class="top-secure-pill">
+              100% SEGURO
+            </div>
+          </div>
+        </div>
+
+        <!-- DIVISOR VERTICAL -->
+        <div class="top-bar-divider" aria-hidden="true"></div>
+
+        <!-- LADO DIREITO: CHAMA + CONDIÇÃO ESPECIAL TERMINA EM + CÁPSULA COM O TEMPO -->
+        <div class="top-bar-right">
+          <div class="top-urgency-header">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="#9E9BFB" stroke="none" class="top-flame-icon">
+              <path d="M12 23c-4.97 0-9-3.8-9-8.5C3 9.3 7 4.5 9.5 2c.4-.4 1.1-.1 1.1.5 0 2.2 1.3 4.2 3.1 5.3 1.1.7 2.3 1.8 2.3 3.7 0 .5.7.8 1.1.4 1.4-1.4 1.9-3.2 1.9-3.2s3 3.5 3 6.8c0 4.7-4.03 8.5-9 8.5z"/>
+            </svg>
+            <span>CONDIÇÃO ESPECIAL TERMINA EM:</span>
+          </div>
+          <div class="top-timer-group">
+            <svg class="top-timer-burst" viewBox="0 0 16 24" width="10" height="18" stroke="#9E9BFB" stroke-width="2.2" stroke-linecap="round">
+              <line x1="14" y1="5" x2="3" y2="3"></line>
+              <line x1="14" y1="12" x2="2" y2="12"></line>
+              <line x1="14" y1="19" x2="3" y2="21"></line>
+            </svg>
+            <div class="top-timer-capsule">
+              <span class="top-timer-number" data-countdown>09:47</span>
+            </div>
+            <svg class="top-timer-burst" viewBox="0 0 16 24" width="10" height="18" stroke="#9E9BFB" stroke-width="2.2" stroke-linecap="round">
+              <line x1="2" y1="5" x2="13" y2="3"></line>
+              <line x1="2" y1="12" x2="14" y2="12"></line>
+              <line x1="2" y1="19" x2="13" y2="21"></line>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         BLOCO 1: PRIMEIRA DOBRA (HEADLINE + MOCKUP + CTA 1)
+         ========================================== -->
+    <header class="hero-section" id="topo">
+      <span class="hero-tag">Papelaria Personalizada para Iniciantes</span>
+      <h1 class="hero-title">
+        Você não precisa aprender papelaria inteira.<br>
+        <span class="highlight-text">Precisa saber o que fazer primeiro.</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        Descubra exatamente qual produto personalizado produzir primeiro, o que comprar e como apresentar aos seus primeiros clientes — mesmo sem experiência, sem impressora cara e sem saber desenhar arte.
+      </p>
+
+      <!-- ESPAÇO MOCKUP PRINCIPAL -->
+      <div class="mockup-container">
+        <img 
+          id="mockup-hero-img"
+          src="/assets/images/mockup_principal.png" 
+          onerror="this.onerror=null; this.src='/assets/images/mockup_principal.jpg';"
+          alt="Mockup Oficial: Meu Primeiro Produto Personalizado"
+          class="mockup-img"
+          referrerpolicy="no-referrer"
+          loading="eager"
+        />
+        <div class="mockup-caption">
+          📦 Tudo pronto, organizado e mastigado no seu celular ou computador
+        </div>
+      </div>
+
+      <!-- BOTÃO 1 -->
+      <a href="#Confira" class="cta-button" id="cta-btn-1">
+        QUERO MEU PRIMEIRO PRODUTO POR R$ 12,90
+      </a>
+      <span class="cta-subtext">🔒 Pagamento seguro • De R$ 47,90 por R$ 12,90 à vista</span>
+    </header>
+
+
+    <!-- ==========================================
+         BLOCO 2: "ISSO AQUI É PRA VOCÊ SE..." (O ESPELHO)
+         ========================================== -->
+    <section class="section-block" id="para-quem">
+      <h2>Isso aqui é pra você se…</h2>
+      <ul class="check-list">
+        <li><strong>Quer uma renda extra em casa</strong>, mas fica completamente perdida sem saber por qual produto começar.</li>
+        <li><strong>Tem medo de comprar materiais, papel e ferramentas</strong> e ver o dinheiro parado na prateleira sem vender nada.</li>
+        <li><strong>Não tem dinheiro sobrando para investir em impressoras caras</strong> ou equipamentos profissionais agora.</li>
+        <li><strong>Não sabe mexer em programas difíceis de design</strong> nem quer passar semanas quebrando a cabeça para criar artes do zero.</li>
+        <li><strong>Já salvou dezenas de tutoriais soltos na internet</strong>, mas na hora de sentar para fazer, parece que nenhuma peça se encaixa.</li>
+      </ul>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 3: A DOR, NA CENA
+         ========================================== -->
+    <section class="section-block" id="a-cena">
+      <h2>A cena que se repete todo dia:</h2>
+      
+      <div class="scene-box">
+        <p>
+          São dez da noite. As crianças dormiram, a casa acalmou e você abre o celular procurando ideias de personalizados para vender. Você salva 15 fotos no Pinterest, entra em três grupos, vê gente falando de máquina de corte, de impressora de mil reais, de tipos de papel que você nunca ouviu o nome.
+        </p>
+        <p style="margin-bottom: 0;">
+          A cabeça ferve, o caderno continua em branco e no dia seguinte você acorda exatamente no mesmo lugar: com vontade de ter seu dinheiro, mas com medo de dar o primeiro passo errado e perder o pouco que tem.
+        </p>
+      </div>
+
+      <p>
+        O problema não é falta de vontade. É que a internet tenta te ensinar uma <strong>profissão inteira</strong> antes de te ensinar a fazer <strong>uma única venda simples</strong>.
+      </p>
+
+      <!-- ==========================================
+           CARROSSEL CONTÍNUO DE PRODUTOS (3ª DOBRA)
+           "O que você vai aprender a produzir"
+           ========================================== -->
+      <div class="products-showcase-section" id="modelos-produtos">
+        <div class="showcase-header">
+          <span class="showcase-tag">✨ MODELOS REAIS & VALIDADOS</span>
+          <h3 class="showcase-title">Exemplos do que você vai aprender a produzir:</h3>
+          <p class="showcase-subtitle">
+            Produtos que não exigem máquinas caras, fáceis de montar na sua mesa e com venda garantida o ano inteiro.
+          </p>
+        </div>
+
+        <!-- CARROSSEL INFINITO / MARQUEE PASSANDO DE UM LADO PARA O OUTRO -->
+        <div class="carousel-wrapper" aria-label="Galeria de produtos passando continuamente">
+          <div class="carousel-track">
+            
+            <!-- CARD 1: CANETAS FLORAIS -->
+            <div class="showcase-product-card">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/canetas_florais.jpg" alt="Canetas Florais em Cartelas Personalizadas" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">🌸 Dia das Mães & Eventos</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Canetas Florais em Cartela</div>
+                <div class="showcase-product-desc">Suportes delicados com flores temáticas que encantam e vendem muito em datas especiais.</div>
+                <div class="showcase-card-footer">
+                  <span>Alta Procura</span>
+                  <span>Montagem Fácil</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 2: CANETAS POMPOM COM NOME -->
+            <div class="showcase-product-card">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/canetas_pompom.jpg" alt="Canetas Decoradas Pompom com Nome" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">✨ Professores & Lembranças</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Canetas Pompom & Letras</div>
+                <div class="showcase-product-desc">Com pompom felpudo, borboletas 3D, glitter e contas com nomes para presentes afetivos.</div>
+                <div class="showcase-card-footer">
+                  <span>Margem Alta</span>
+                  <span>Sucesso em Vendas</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 3: CAIXAS COM VISOR -->
+            <div class="showcase-product-card">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/caixas_visor.jpg" alt="Caixas com Visor Acetato Personalizadas" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">🎁 Embalagens de Luxo</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Caixas com Visor Acetato</div>
+                <div class="showcase-product-desc">Embalagens personalizadas que valorizam qualquer item e multiplicam o preço final da peça.</div>
+                <div class="showcase-card-footer">
+                  <span>Valor Percebido</span>
+                  <span>Sem Máquina Cara</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 4: KITS DE PERSONAGENS -->
+            <div class="showcase-product-card">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/caneta_stitch.jpg" alt="Kits de Personagens Infantis com Caneta Stitch" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">⭐ Febre de Vendas</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Kits de Personagens em Alta</div>
+                <div class="showcase-product-desc">Caneta pompom temática com laço de cetim e caixa coordenada que as mães compram na hora.</div>
+                <div class="showcase-card-footer">
+                  <span>Desejo Imediato</span>
+                  <span>Lucro Rápido</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 5: BANDEJAS PRESENTES -->
+            <div class="showcase-product-card">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/bandeja_festa.jpg" alt="Bandejas Decoradas para Kits e Festas" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">🎉 Comemorações & Cestas</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Bandejas Presenteáveis</div>
+                <div class="showcase-product-desc">Estruturas decoradas com arco para doces, aniversários e lembranças de alto valor.</div>
+                <div class="showcase-card-footer">
+                  <span>Ticket Médio Alto</span>
+                  <span>Muito Pedido</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 6: BANDEJAS ESCOLARES & TIMES -->
+            <div class="showcase-product-card">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/bandejas_temas.jpg" alt="Bandejas Organizadoras Temáticas Escolares e Times" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">⚽ Volta às Aulas & Times</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Bandejas Escolares & Times</div>
+                <div class="showcase-product-desc">Organizadores com lápis, caderninhos e adesivos que vendem forte o ano todo.</div>
+                <div class="showcase-card-footer">
+                  <span>Venda Fácil</span>
+                  <span>Lucro Imediato</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- DUPLICAÇÃO DOS 6 CARDS PARA LOOP INFINITO SEM INTERRUPÇÃO -->
+            <div class="showcase-product-card" aria-hidden="true">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/canetas_florais.jpg" alt="" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">🌸 Dia das Mães & Eventos</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Canetas Florais em Cartela</div>
+                <div class="showcase-product-desc">Suportes delicados com flores temáticas que encantam e vendem muito em datas especiais.</div>
+                <div class="showcase-card-footer">
+                  <span>Alta Procura</span>
+                  <span>Montagem Fácil</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-product-card" aria-hidden="true">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/canetas_pompom.jpg" alt="" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">✨ Professores & Lembranças</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Canetas Pompom & Letras</div>
+                <div class="showcase-product-desc">Com pompom felpudo, borboletas 3D, glitter e contas com nomes para presentes afetivos.</div>
+                <div class="showcase-card-footer">
+                  <span>Margem Alta</span>
+                  <span>Sucesso em Vendas</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-product-card" aria-hidden="true">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/caixas_visor.jpg" alt="" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">🎁 Embalagens de Luxo</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Caixas com Visor Acetato</div>
+                <div class="showcase-product-desc">Embalagens personalizadas que valorizam qualquer item e multiplicam o preço final da peça.</div>
+                <div class="showcase-card-footer">
+                  <span>Valor Percebido</span>
+                  <span>Sem Máquina Cara</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-product-card" aria-hidden="true">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/caneta_stitch.jpg" alt="" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">⭐ Febre de Vendas</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Kits de Personagens em Alta</div>
+                <div class="showcase-product-desc">Caneta pompom temática com laço de cetim e caixa coordenada que as mães compram na hora.</div>
+                <div class="showcase-card-footer">
+                  <span>Desejo Imediato</span>
+                  <span>Lucro Rápido</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-product-card" aria-hidden="true">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/bandeja_festa.jpg" alt="" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">🎉 Comemorações & Cestas</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Bandejas Presenteáveis</div>
+                <div class="showcase-product-desc">Estruturas decoradas com arco para doces, aniversários e lembranças de alto valor.</div>
+                <div class="showcase-card-footer">
+                  <span>Ticket Médio Alto</span>
+                  <span>Muito Pedido</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-product-card" aria-hidden="true">
+              <div class="showcase-img-holder">
+                <img src="/assets/images/bandejas_temas.jpg" alt="" referrerpolicy="no-referrer" loading="lazy">
+                <span class="showcase-badge">⚽ Volta às Aulas & Times</span>
+              </div>
+              <div class="showcase-card-body">
+                <div class="showcase-product-name">Bandejas Escolares & Times</div>
+                <div class="showcase-product-desc">Organizadores com lápis, caderninhos e adesivos que vendem forte o ano todo.</div>
+                <div class="showcase-card-footer">
+                  <span>Venda Fácil</span>
+                  <span>Lucro Imediato</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="showcase-hint">
+          <span>👈 Arraste para os lados ou passe o mouse/dedo para pausar 👉</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 4: A VIRADA (O MECANISMO)
+         ========================================== -->
+    <section class="section-block" id="a-virada">
+      <div class="pivot-box">
+        <div class="pivot-headline">A solução não é fazer tudo. É fazer o Começo Certo.</div>
+        <p>
+          O <strong>Kit Começo Certo</strong> é o atalho prático que pega você pela mão e diz: <em>"Faça esse produto aqui primeiro, compre só essa folha, cobre esse valor e mostre desse jeito."</em>
+        </p>
+      </div>
+      <p>
+        Você não precisa montar uma papelaria completa na sua sala. Você só precisa colocar <strong>o seu primeiro produto na mão do cliente</strong> para destravar a sua primeira entrada de dinheiro.
+      </p>
+
+      <!-- BOTÃO 2 -->
+      <a href="#Confira" class="cta-button" id="cta-btn-2">
+        QUERO MEU PRIMEIRO PRODUTO POR R$ 12,90
+      </a>
+      <span class="cta-subtext">Acesso imediato no seu e-mail logo após o pagamento</span>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 5: O QUE TEM DENTRO (COM BENEFÍCIO COLADO)
+         ========================================== -->
+    <section class="section-block" id="conteudo">
+      <h2>O que você vai receber:</h2>
+      <p class="lead">Tudo organizado e direto ao ponto, para você abrir no celular ou imprimir sem complicação.</p>
+
+      <!-- ITEM 1 -->
+      <div class="item-card">
+        <div class="item-header">
+          <span class="item-number">1</span>
+          <span class="item-title">Mapa “Qual Produto Começar?”</span>
+        </div>
+        <p><strong>O benefício:</strong> Você para de ter dúvida. Um guia visual que analisa sua realidade e aponta exatamente qual dos 10 produtos é o ideal para você iniciar hoje, considerando:</p>
+        <ul>
+          <li>Quanto dinheiro você tem para começar (mesmo que seja quase nada);</li>
+          <li>Se você tem impressora em casa ou se vai imprimir na gráfica rápida do bairro;</li>
+          <li>A facilidade e rapidez de montagem na sua mesa;</li>
+          <li>Para quem é mais fácil oferecer primeiro na sua rotina.</li>
+        </ul>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="item-card">
+        <div class="item-header">
+          <span class="item-number">2</span>
+          <span class="item-title">10 Produtos Personalizados Validados</span>
+        </div>
+        <p><strong>O benefício:</strong> Você não gasta horas procurando ideias que ninguém compra. São 10 opções simples e de alta procura (como adesivos escolares para lápis, tags e lembrancinhas fáceis) com a ficha completa de cada um:</p>
+        <ul>
+          <li>Modelo pronto para uso imediato;</li>
+          <li>Lista exata de materiais necessários (sem gastar com supérfluos);</li>
+          <li>Quantidade certa para não sobrar estoque encalhado;</li>
+          <li>Passo a passo simples de montagem com tesoura ou estilete;</li>
+          <li>Custo real de produção centavo por centavo;</li>
+          <li>Preço sugerido de venda para ter lucro de verdade;</li>
+          <li>Sugestão de abordagem para fechar os primeiros pedidos.</li>
+        </ul>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="item-card">
+        <div class="item-header">
+          <span class="item-number">3</span>
+          <span class="item-title">Ficha “Faça Seu Primeiro Produto”</span>
+        </div>
+        <p><strong>O benefício:</strong> Acaba com a paralisia. Uma rota visual mastigada para você seguir sem se perder:</p>
+        <p style="font-weight: 800; color: #5B7CFA; text-align: center; margin: 12px 0;">
+          Escolha → Compre → Produza → Precifique → Apresente → Venda
+        </p>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="item-card">
+        <div class="item-header">
+          <span class="item-number">4</span>
+          <span class="item-title">Guia de Precificação Rápida</span>
+        </div>
+        <p><strong>O benefício:</strong> Sem contas difíceis e sem medo de pagar para trabalhar. Descubra quanto custa produzir cada peça e quanto cobrar no Pix para ter lucro seguro, sem depender de fórmulas complicadas.</p>
+      </div>
+
+      <!-- ITEM 5 -->
+      <div class="item-card">
+        <div class="item-header">
+          <span class="item-number">5</span>
+          <span class="item-title">Mini Catálogo Editável</span>
+        </div>
+        <p><strong>O benefício:</strong> Apresentação profissional desde o primeiro dia. Um catálogo limpo onde você só coloca seu nome e WhatsApp para mandar no grupo da família, na porta da escola ou no status.</p>
+      </div>
+
+      <!-- ESPAÇO MOCKUP SECUNDÁRIO -->
+      <div class="mockup-placeholder">
+        <span class="mockup-tag">MOCKUP DOS ENTREGÁVEIS</span>
+        <div class="mockup-desc">
+          [MOCKUP: Visão geral dos 5 materiais abertos em formato digital no tablet/celular e fichas técnicas impressas com produtos reais ao lado]
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 6: PROVA SOCIAL (BLOCO ESTRUTURADO PARA PREENCHER)
+         ========================================== -->
+    <section class="section-block" id="depoimentos">
+      <h2>O que diz quem já deu o primeiro passo:</h2>
+      
+      <!-- DEPOIMENTO 1 -->
+      <div class="proof-box">
+        <span class="proof-badge">DEPOIMENTO 01 • INICIANTE</span>
+        <p style="font-style: italic; margin-bottom: 8px;">
+          "Eu tinha pavor de comprar papel errado e perder dinheiro. O Mapa clareou tudo: escolhi os adesivos para lápis, imprimi na papelaria da esquina por R$ 4,00 e já vendi meu primeiro kit para a mãe de um colega do meu filho."
+        </p>
+        <strong>— [Nome da Aluna / Cidade]</strong>
+      </div>
+
+      <!-- DEPOIMENTO 2 -->
+      <div class="proof-box">
+        <span class="proof-badge">DEPOIMENTO 02 • MÃE EM CASA</span>
+        <p style="font-style: italic; margin-bottom: 8px;">
+          "Sempre achei que precisava comprar máquina de corte cara para começar. Fiz tudo com régua e tesoura seguindo a ficha. O mini catálogo me deu a coragem que faltava para postar no WhatsApp."
+        </p>
+        <strong>— [Nome da Aluna / Cidade]</strong>
+      </div>
+
+      <!-- ESPAÇO PRINT WHATSAPP -->
+      <div class="mockup-placeholder" style="margin-top: 14px;">
+        <span class="mockup-tag">PRINTS DE RESULTADOS REAIS</span>
+        <div class="mockup-desc">
+          [ESPAÇO RESERVADO: Coloque aqui prints de conversas de WhatsApp com mensagens de alunas comemorando a primeira venda ou o primeiro produto finalizado]
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 7: BÔNUS
+         ========================================== -->
+    <section class="section-block" id="bonus">
+      <h2>E você ainda leva 3 Bônus Exclusivos:</h2>
+      <p>Materiais complementares pensados exatamente para você não travar depois de produzir.</p>
+
+      <!-- BÔNUS 1 -->
+      <div class="bonus-card">
+        <span class="bonus-anchor">BÔNUS 1 (VALOR SEPARADO: R$ 27,00)</span>
+        <h3 style="font-size: 18px; margin: 6px 0;">Guia dos Primeiros Clientes</h3>
+        <p style="margin-bottom: 0;">
+          Os lugares e ocasiões mais simples para uma iniciante apresentar seus produtos (escolas, vizinhos, mães de alunos, comércio local) com frases prontas do que falar.
+        </p>
+      </div>
+
+      <!-- BÔNUS 2 -->
+      <div class="bonus-card">
+        <span class="bonus-anchor">BÔNUS 2 (VALOR SEPARADO: R$ 27,00)</span>
+        <h3 style="font-size: 18px; margin: 6px 0;">Catálogo Extra de Ideias</h3>
+        <p style="margin-bottom: 0;">
+          Mais opções de produtos fáceis para você expandir sua oferta com segurança assim que fizer suas primeiras vendas com o primeiro produto.
+        </p>
+      </div>
+
+      <!-- BÔNUS 3 -->
+      <div class="bonus-card">
+        <span class="bonus-anchor">BÔNUS 3 (VALOR SEPARADO: R$ 17,00)</span>
+        <h3 style="font-size: 18px; margin: 6px 0;">Checklist “Comece Sem Se Perder”</h3>
+        <p style="margin-bottom: 0;">
+          Uma lista prática para ticar item por item, desde o download do arquivo até a entrega do primeiro produto na mão do cliente.
+        </p>
+      </div>
+
+      <p style="text-align: center; font-size: 15px; color: #62657F; margin-top: 10px;">
+        Os 3 bônus somados valem <strong>R$ 71,00</strong> — mas hoje vão <strong>de graça</strong> junto com o seu kit.
+      </p>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 8: A OFERTA
+         ========================================== -->
+    <section class="section-block" id="oferta">
+      <div class="offer-box">
+        <span class="economy-pill">VOCÊ ECONOMIZA R$ 35,00 HOJE</span>
+        
+        <p style="font-size: 16px; margin-bottom: 4px;">Somando o Kit + Todos os Bônus:</p>
+        <div class="price-old">De R$ 47,90</div>
+
+        <!-- CRONÔMETRO DE CONTAGEM REGRESSIVA 1 -->
+        <div class="countdown-wrapper" id="timer-oferta">
+          <div class="countdown-label">⏰ Essa condição especial termina em:</div>
+          <div class="countdown-timer" data-countdown>09:47</div>
+        </div>
+
+        <p style="font-size: 17px; font-weight: 700; margin-bottom: 2px;">Por apenas:</p>
+        <div class="price-main"><span>R$</span>12,90</div>
+        
+        <p style="font-size: 15px; color: #62657F; font-weight: 600; margin-bottom: 16px;">
+          Pagamento único à vista no Pix ou Cartão • Sem mensalidade
+        </p>
+
+        <!-- BOTÃO 3 -->
+        <a href="#Confira" class="cta-button" id="cta-btn-3">
+          QUERO MEU PRIMEIRO PRODUTO POR R$ 12,90
+        </a>
+        <span class="cta-subtext">Acesso imediato no seu e-mail assim que confirmar</span>
+
+        <p style="font-size: 13px; color: #62657F; margin-top: 10px; margin-bottom: 0;">
+          ✓ Acesso vitalício aos arquivos baixados<br>
+          ✓ Funciona no celular e no computador<br>
+          ✓ Pode imprimir em casa ou na gráfica rápida
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 9: GARANTIA DE RISCO INVERTIDO
+         ========================================== -->
+    <section class="section-block" id="garantia">
+      <div class="guarantee-box">
+        <div class="guarantee-badge">7</div>
+        <h3 style="font-size: 21px; margin-bottom: 8px;">Garantia Incondicional de 7 Dias</h3>
+        <p style="font-weight: 700; color: #5B7CFA; margin-bottom: 10px;">
+          O risco é 100% nosso.
+        </p>
+        <p style="font-size: 16px; margin-bottom: 0;">
+          Entre, baixe o material, olhe o Mapa e confira as fichas de produção. Se você achar que o material não é para você ou que não te ajudou a dar o primeiro passo, basta mandar um único e-mail dentro de 7 dias e devolvemos 100% do seu dinheiro. Sem letras miúdas e sem perguntas.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 10: QUEM FEZ
+         ========================================== -->
+    <section class="section-block" id="quem-fez">
+      <h2>Quem preparou esse material para você</h2>
+      
+      <div class="author-card">
+        <!-- ESPAÇO FOTO DA AUTORA / MARCA -->
+        <div class="mockup-placeholder" style="padding: 16px; margin-top: 0;">
+          <span class="mockup-tag">FOTO DA ESPECIALISTA OU LOGO</span>
+          <div class="mockup-desc">
+            [FOTO: Imagem acolhedora da autora na bancada de trabalho com tesoura e personalizados prontos, ou logo oficial da marca]
+          </div>
+        </div>
+
+        <h3 style="font-size: 19px; margin-bottom: 6px;">[Nome da Especialista / Marca do Ateliê]</h3>
+        <p style="font-size: 15px; color: #62657F; font-weight: 600; margin-bottom: 12px;">
+          Especialista em Personalizados Rápidos para Iniciantes
+        </p>
+        <p style="font-size: 16px; margin-bottom: 0;">
+          "Eu também já fiquei paralisada na frente de tutoriais de horas, achando que precisava de uma fortuna para começar. Criei o <strong>Kit Começo Certo</strong> para que nenhuma mulher precise passar meses perdida antes de conseguir fazer e vender o seu primeiro produto de papelaria."
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 11: PERGUNTAS FREQUENTES (FAQ OBJEÇÕES REAIS)
+         ========================================== -->
+    <section class="section-block" id="faq">
+      <h2>Perguntas Frequentes</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">1. Preciso ter impressora em casa para começar?</div>
+        <p class="faq-answer">
+          Não. O material foi desenhado para quem tem impressora e também para quem não tem. O Mapa mostra exatamente quais produtos você pode imprimir por poucos reais na gráfica rápida ou papelaria do seu bairro e montar na sua mesa.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">2. Funciona se eu só tiver o celular?</div>
+        <p class="faq-answer">
+          Sim! Todos os guias, mapas e arquivos podem ser abertos, lidos e consultados diretamente na tela do seu celular.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">3. E se eu nunca tiver vendido nada na vida?</div>
+        <p class="faq-answer">
+          É exatamente para você. Em vez de te ensinar técnicas avançadas que você não vai usar agora, o kit foca em um produto simples e no roteiro de como mostrar para as primeiras pessoas da sua convivência.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">4. Preciso saber mexer no Canva ou em programas de design?</div>
+        <p class="faq-answer">
+          Não. Os modelos vêm prontos para uso. Você não precisa criar arte do zero, alinhar desenhos nem entender de paleta de cores. É baixar, seguir o roteiro e produzir.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">5. Como e quando eu recebo o acesso?</div>
+        <p class="faq-answer">
+          O acesso é imediato. Assim que o pagamento for confirmado (no Pix a liberação é na mesma hora), você recebe um e-mail com o link direto para baixar todos os arquivos no seu celular ou computador.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">6. O acesso tem prazo de validade?</div>
+        <p class="faq-answer">
+          Não. O acesso aos arquivos que você baixar é vitalício. Você pode salvar no seu celular, no computador ou imprimir as fichas para ter sempre em mãos na sua bancada.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">7. E se eu comprar e achar que não é pra mim?</div>
+        <p class="faq-answer">
+          Você tem 7 dias de garantia incondicional. Basta enviar um e-mail para o nosso suporte que devolvemos todo o seu dinheiro sem questionar nada.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 12: ÚLTIMO EMPURRÃO + BOTÃO FINAL
+         ========================================== -->
+    <section class="section-block" style="text-align: center;" id="chamada-final">
+      <h2>Pare de ficar pulando de tutorial em tutorial.</h2>
+      <p style="margin: 16px 0;">
+        Você não precisa saber criar tudo.<br>
+        Não precisa montar uma papelaria inteira.<br>
+        Não precisa começar com dezenas de produtos.<br>
+        <strong>Você só precisa descobrir qual é o seu primeiro produto.</strong>
+      </p>
+
+      <!-- CRONÔMETRO DE CONTAGEM REGRESSIVA 2 (FINAL) -->
+      <div class="countdown-wrapper" id="timer-final" style="margin-bottom: 16px;">
+        <div class="countdown-label">⏰ Essa condição especial termina em:</div>
+        <div class="countdown-timer" data-countdown>09:47</div>
+      </div>
+
+      <!-- BOTÃO 4 -->
+      <a href="#Confira" class="cta-button" id="cta-btn-4">
+        QUERO MEU PRIMEIRO PRODUTO POR R$ 12,90
+      </a>
+      <span class="cta-subtext">🔒 Compra 100% segura • Garantia total de 7 dias</span>
+    </section>
+
+
+    <!-- ==========================================
+         BLOCO 13: RODAPÉ LEGAL
+         ========================================== -->
+    <footer class="page-footer">
+      <p style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">
+        [NOME DA SUA EMPRESA OU ATELIÊ LTDA]
+      </p>
+      <p style="margin-bottom: 8px;">
+        CNPJ: [00.000.000/0001-00] • Suporte: [contato@seudominio.com.br]
+      </p>
+
+      <div class="footer-links">
+        <a href="#termos" onclick="return false;">Termos de Uso</a> • 
+        <a href="#privacidade" onclick="return false;">Política de Privacidade</a>
+      </div>
+
+      <div class="footer-legal-notice">
+        "Este produto não garante a obtenção de resultados financeiros. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como garantia de resultados. A plataforma de pagamento é apenas o meio de processamento financeiro e não tem vínculo com o conteúdo deste produto."
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- ==========================================
+       BARRA FIXA NO RODAPÉ DA TELA (MOBILE-FIRST)
+       ========================================== -->
+  <div class="sticky-bottom-bar" id="barra-fixa">
+    <a href="#Confira" class="cta-button" id="cta-btn-sticky">
+      QUERO MEU PRIMEIRO PRODUTO POR R$ 12,90
+    </a>
+  </div>
+
+  <!-- ==========================================
+       SCRIPT DO CRONÔMETRO DE CONTAGEM REGRESSIVA
+       Sincronizado, tempo real, sem reset no 00:00
+       ========================================== -->
+  <script>
+    (function() {
+      // Inicia exatamente em 09 minutos e 47 segundos (587 segundos)
+      var totalSeconds = (9 * 60) + 47;
+
+      function renderCountdown() {
+        var mins = Math.floor(totalSeconds / 60);
+        var secs = totalSeconds % 60;
+        var formatted = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+
+        var timerElements = document.querySelectorAll('[data-countdown]');
+        for (var i = 0; i < timerElements.length; i++) {
+          timerElements[i].textContent = formatted;
+        }
+      }
+
+      // Renderização inicial imediata: 09:47
+      renderCountdown();
+
+      var timerInterval = setInterval(function() {
+        if (totalSeconds > 0) {
+          totalSeconds--;
+          renderCountdown();
+        } else {
+          // Quando chega a 00:00, para a contagem e NUNCA reinicia nem volta para 09:47
+          clearInterval(timerInterval);
+        }
+      }, 1000);
+    })();
+  </script>
+
+</body>
+</html>
